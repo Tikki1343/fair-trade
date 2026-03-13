@@ -70,7 +70,7 @@ export default async function handler(req, res) {
       return res.status(200).json({ error: data.error.message });
     }
 
-    const text = data.candidates?.[0]?.content?.parts?.[0]?.text || '';
+    const text = data.candidates?.[0]?.content?.parts?.[0]?.text || JSON.stringify(data);
     const clean = text.replace(/```json|```/g, '').trim();
 
     return res.status(200).json({ text: clean });
